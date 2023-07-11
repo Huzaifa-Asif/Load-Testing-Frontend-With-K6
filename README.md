@@ -26,7 +26,7 @@ K6 will execute the test case and display the test results and relevant metrics.
 Congratulations! You have successfully installed K6 and executed a load testing script. Repeat Step 3 for each test case mentioned below, customizing the command as necessary. Analyze the test results to gain insights into your frontend application's performance under different load scenarios.
 
 
-Here are some example browser test cases for k6, a popular open-source load testing tool:
+Here are some example browser test cases for k6:
 
 ## Script Details
 
@@ -42,32 +42,17 @@ Description: When user click on the specified link. Verify that the browser navi
 File Name: `3-login-form.js`
 Description: Verify that login page is opened in browser and user credentials are typed in the appropriate fields and user is authenticated and redirect to dashboard page.
 
+4. **Stress Test**
+File Name: `4-stress-test`
+Description: Evaluates how frontend application performs when subjected to high user traffic. It aims to analyze the application’s behavior under extreme conditions.
 
-Send a GET request to the specified API endpoint.
-Measure the response time.
-Validate that the response time is within an acceptable range.
-Test Case: Test form validation
+5. **Login Form Test**
+File Name: `5-stress-test-with-report`
+Description: Stress test with html report generation when test execution is finished.
 
-Load a web page with a form.
-Fill in the form fields with invalid or missing data.
-Submit the form.
-Verify that appropriate validation error messages are displayed.
-Test Case: Test AJAX request response
+6. **Login Form Test**
+File Name: `6-device_emulation`
+Description: Verify how web application works on mobile device.
 
-Load a web page that triggers an AJAX request.
-Send the AJAX request.
-Validate the response received from the AJAX call.
-Test Case: Test cookie management
-
-Load a web page that sets a cookie.
-Verify that the cookie is correctly set.
-Perform actions that depend on the presence of the cookie.
-Validate that the expected behavior occurs.
-Test Case: Test browser cache behavior
-
-Load a web page that contains static resources (e.g., images, CSS, JavaScript).
-Verify that the browser caches the resources.
-Refresh the page and validate that the cached resources are used, reducing server requests.
-These are just a few examples of browser test cases for k6. You can customize and extend them based on your specific application and requirements.
 
 > Feel free to explore and modify these load testing scripts according to your specific application requirements.
