@@ -1,36 +1,25 @@
-import { check, sleep } from 'k6';
-import { browser, devices } from 'k6/experimental/browser';
+import { chromium, devices } from 'k6/experimental/browser';
+import { sleep } from 'k6';
 
-//  s
-export default async function() {
-  const device = devices['iPhone X'];
-  // The spread operator is currently unsupported by k6's Babel, so use
-  // Object.assign instead to merge browser context and device options.
-  // See https://github.com/grafana/k6/issues/2296
-  const options = Object.assign({ locale: 'es-ES' }, device);
-  const context = browser.newContext(options);
+export default async function () {
+  const browser = chromium.launch({ headless: false });
+  const iphoneX = devices['iPhone X'];
+  const context = browser.newContext(iphoneX);
+// We can also use the viewport option to set the width and height of the browser window:  
+//   const context = browser.newContext({
+//     viewport: {
+//       width: 375,
+//       height: 812,
+//     },
+//     deviceScaleFactor: 3,
+//   });
   const page = context.newPage();
 
   try {
-    await page.goto('https://k6.io/', { waitUntil: 'networkidle' });
-    const dimensions = page.evaluate(() => {
-      return {
-        width: document.documentElement.clientWidth,
-        height: document.documentElement.clientHeight,
-        deviceScaleFactor: window.devicePixelRatio
-      };
-    });
-
-    check(dimensions, {
-      'width': d => d.width === device.viewport.width,
-      'height': d => d.height === device.viewport.height,
-      'scale': d => d.deviceScaleFactor === device.deviceScaleFactor,
-    });
-
-    if (!__ENV.K6_BROWSER_HEADLESS) {
-      sleep(10);
-    }
+    await page.goto('https://stotte.no/');
+    sleep(10);
   } finally {
     page.close();
+    browser.close();
   }
 }

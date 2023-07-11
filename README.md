@@ -1,5 +1,5 @@
 
-# Load Testing Scripts for Frontend Application APIs
+# Load Testing Scripts for Frontend Application
 This repository contains a collection of browser load testing scripts written in K6 to assess the performance and reliability of your frontend application. Load testing helps identify performance regressions, scalability issues, and bottlenecks, enabling you to build resilient and performant applications that can handle high traffic.
 
 ## Why Load Testing?
