@@ -8,7 +8,7 @@ export default async function () {
   try {
     await page.goto('https://testorg.stotte.no');
     // get element by id
-    page.locator('#kt_sign_in_nif_submit').click(); 
+    // page.locator('#kt_sign_in_nif_submit').click(); 
     // get element by url
     page.locator('a[href="/auth/forgot-password"]').click();
 
